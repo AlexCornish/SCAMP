@@ -1,0 +1,76 @@
+<!doctype html>
+<head>
+   <title> Main Page (S.C.A.M.P) </title>
+   <style>
+      h1 {color: white;
+          text-align: center;
+          background-color: black;}
+      h2 {color: black;
+          text-align: center;
+          background-color: white;
+          position: absolute;
+          font-size: 25px;
+          top: 120px;
+          left: 30px}
+      body {background-color: white;}
+      div.page {font-size: 25px;
+          background: white;
+          color: black;
+          position: absolute;
+          top: 170px;
+          padding: 15px;}
+      form.btn {
+         color: black;
+         background: white;
+      }
+      #rectangle{
+         width:100%;
+         height:130px;
+         background:black;
+         position: absolute;
+         left: 0px;
+         z-index: -1;
+         top: 0px;
+      }
+      #line{
+         width:100%;
+         height:5px;
+         background:white;
+         position: absolute;
+         left: 0px;
+         z-index: -1;
+         top: 117.5px; 
+      }
+  </style>
+</head>
+<div id="rectangle"></div>
+<div id="line"></div>
+<h1> Statcan Computer Assisted Matching Program (S.C.A.M.P) </h1>
+<form action = "http://localhost:5000/home" method = "GET">
+   <button class="btn" style="position: relative; font-size: 20px; width: 200px;" type="submit"> Main Menu</button>
+</form>
+<form action = "http://localhost:5000/exactword" method = "GET">
+   <button class="btn" style="position: relative; bottom: 29px; left: 200px; font-size: 20px; width: 200px;" type="submit"> Exact Search</button>
+</form>
+<form action = "http://localhost:5000/codesearch" method = "GET">
+   <button class="btn" style="position: relative; left: 400px; bottom: 58px; font-size: 20px; width: 200px;" type="submit"> Code Search</button>
+</form>
+<form action = "http://localhost:5000/stringparser" method = "GET">
+   <button class="btn" style="position: relative; left: 600px;  bottom: 87px; font-size: 20px; width: 200px;" type="submit"> String Parser</button>
+</form>
+   <body>
+    <h2> Exact Word Search: </h2> 
+
+      <form style="position: relative; bottom: 30px; left: 40px" action = "http://localhost:5000/exactwordresult" method = "POST">
+         <h3> Which dataset would you like to search in? </h3>
+         <p style="font-size: 20px;">BLS <input  type="radio" name="datatype" value="BLS"></p>
+         <p style="font-size: 20px;">NAPCS <input type="radio" name="datatype" value="NAPCS"></p>
+         <h3> What exact word would you like to search for? </h3>
+         <p style="font-size: 20px;">Exact Word:  <input type ="text" name = "exactword" /></p>
+         <h3> Optional Filtering for NAPCS only: </h4>
+         <p style="font-size: 20px;"> What length code would you like to look for? (Optional) <input type ="text" name = "lengthCode" /></p>
+         <p style="font-size: 20px;"> What code first digit would you like to look for? (Optional) <input type ="text" name = "firstdigit" /></p>
+         <p><input style="font-size: 20px; width: 200px;" type = "submit" value = "Submit" /></p>
+      </form>
+   </body>
+
