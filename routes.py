@@ -1,5 +1,6 @@
 from app import tempMatch
 from app import app
+from app import correlation
 from flask import render_template, request
 
 
@@ -46,3 +47,14 @@ def codesearchResult():
     if request.method == 'POST':
         result = request.form
         return render_template('codesearchresult.html',result=tempMatch.main(result)) 
+
+@app.route('/correlator')
+def correlator():    
+    return render_template('correlator.html')   
+
+@app.route('/correlatorresult', methods = ["POST","GET"])
+def correlatorResult():
+    if request.method == 'POST':
+        result = request.form
+        print("result: ", result)
+        return render_template('correlatorresult.html',result=correlation.performCorrelation(result)) 

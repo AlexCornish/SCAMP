@@ -51,6 +51,8 @@ def pmConverter(dateTimeStr):
 
 # convertToDateObj: Converts string to dateTime object.
 def convertToDateObj(dateTimeStr):
+    if ">" in dateTimeStr:
+        dateTimeStr = dateTimeStr.rsplit(">",1)[1]
     if "PM" in dateTimeStr:
         return convertFormat(str(pmConverter(dateTimeStr))[:-3])
     timeStr = str(datetime.datetime.strptime(dateTimeStr[:-4], '%m/%d/%Y %H:%M'))[:-3]
